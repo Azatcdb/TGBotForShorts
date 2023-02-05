@@ -79,11 +79,12 @@ public class TGBotService extends TelegramLongPollingBot {
         Matcher matcher = pattern.matcher(message);
         Optional<String> names = null;
         if (!matcher.find()) {
-            names = Optional.of("Incorrect link!\n" +
-                    "Link's format:\n" +
-                    "https://www.youtube.com/shorts/{videoId}\n" +
-                    "https://youtu.be/{videoId} \n" +
-                    "Please try again");
+            names = Optional.of("""
+                    Incorrect link!
+                    Link's format:
+                    https://www.youtube.com/shorts/{videoId}
+                    https://youtu.be/{videoId}\s
+                    Please try again""");
         } else {
             try {
                 message = findNamesByJPGSImp.getJPG(message);
